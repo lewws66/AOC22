@@ -9,14 +9,52 @@
 //#include <bits/stdc++.h> 
 using namespace std;
 //https://adventofcode.com/2022/day/1
-// The input files that did not cause program to fail are
+//
+// The onlyh input files that did not cause program to fail are
 // calories.txt, newtest1.txt
 // Somehow the rest of files got corrupted and cause the // system to halt
 
-using namespace std;
+//This code did not use vectors also worked only with 
+//calories .txt and newtest1.txt. The rest of the input
+// files created dump errors reasons still unknown.
+
+int main () {
+int inc, totalc=0, maxc=0;  // string to form from file
+// important to initialize variables to zero so
+// that values do not start from not zero
+string filepath; // for file name and location
+filepath = "calories.txt";
+// Latest adapted from ChatGPT   
+string line ;   // input as string
+ifstream in(filepath);
+ while (getline(in,line)) {
+   //cout<<line<<endl;
+  // cout<<"maxc = "<<maxc<<endl;
+  if (line=="") {
+      //reach end of one elf's calorie supply
+     if (maxc<totalc) {
+            maxc= totalc;      
+     }
+      totalc = 0; //reset for next elf input
+  } else {
+      inc = stoi(line);
+      totalc +=inc;
+    //cout<<"totalc = "<<totalc;
+  }
+}
+  cout<<"maxc = "<<maxc;
+ return 0;
+}  
+
+// This code is based on ChatGPT suggestion and uses vector 
+// data structure on variable "sums". It also worked only with 
+//calories .txt and newtest1.txt. The rest of the input
+// files created dump errors reasons still unknown.
+// 
+/*
 int main() {
     vector<int> sums;
-    ifstream file("calories.txt");
+    ifstream file("newtest1.txt");
     string line;
     int current_sum = 0;
     while (getline(file, line)) {
@@ -43,56 +81,5 @@ int main() {
   cout<< current_sum <<endl;
     return 0;
 }
-
-//The rest of the codes below didn't work because of various reasons.
-
-/*
-int main () {
-int inc, totalc, maxc;  // string to form from file
-string filepath; // for file name and location
-filepath = "d1puzzle1-test.txt";
-// Latest adapted from ChatGPT   
-string line ;   // input as string
-ifstream in(filepath);
- while (getline(in,line)) {
-   //cout<<line<<endl;
-   //cout<<"maxc = "<<maxc<<endl;
-  if (line=="") {
-      //reach end of one elf's calorie supply
-     if (maxc<totalc) {
-            maxc= totalc;      
-     }
-      totalc = 0; //reset for next elf input
-  } else {
-      inc = stoi(line);
-      totalc +=inc;
-    //cout<<"totalc = "<<totalc;
-  }
-}
-  cout<<"maxc = "<<maxc;
- return 0;
-}  
 */
-/*
-int main () {
-long int inc, totalc, maxc;  // string to form from file
-string filepath; // for file name and location
-filepath = "d1puzzle1-test.txt";
-// Latest adapted from ChatGPT   
-string line ;   // input as string
-ifstream in(filepath);
- while (getline(in,line)) {
-  if (line=="x") {
-      //reach end of one elf's calorie supply
-     if (maxc<totalc) {
-            maxc= totalc;      
-     }
-      totalc = 0; //reset for next elf input
-  } else {
-      inc = stoi(line);
-      totalc +=inc;
-  }
-}
- return 0;
-}  
-*/
+
